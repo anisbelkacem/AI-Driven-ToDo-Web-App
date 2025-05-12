@@ -1,10 +1,10 @@
-[FR1 – Create, Update, and Delete Tasks]--> https://github.com/se2p/todo-app-anisbelkacem/issues/1
-[FR2 – Notifications for Due Tasks]--> https://github.com/se2p/todo-app-anisbelkacem/issues/2)
-[FR3 – Login/Signup with Email or Third-Party Providers] --> https://github.com/se2p/todo-app-anisbelkacem/issues/3
-[FR4 – Mark Tasks as Completed] --> https://github.com/se2p/todo-app-anisbelkacem/issues/4
-[FR5 – View Tasks in Daily/Weekly/Monthly Formats] --> https://github.com/se2p/todo-app-anisbelkacem/issues/5
-[FR6 – Set Priority Levels for Tasks] --> https://github.com/se2p/todo-app-anisbelkacem/issues/6
-[NFR1 – App Responds Within 2 Seconds] --> https://github.com/se2p/todo-app-anisbelkacem/issues/7
-[NFR2 – 99.9% Uptime] --> https://github.com/se2p/todo-app-anisbelkacem/issues/8
-[NFR3 – Data Encryption in Transit and at Rest] -->  https://github.com/se2p/todo-app-anisbelkacem/issues/9
-[NFR4 – Support 10,000 Concurrent Users] --> https://github.com/se2p/todo-app-anisbelkacem/issues/10
+[FR1 – Create, Update, and Delete Tasks](https://github.com/se2p/todo-app-anisbelkacem/issues/1)  
+[FR2 – Notifications for Due Tasks](https://github.com/se2p/todo-app-anisbelkacem/issues/2)  
+[FR3 – Login/Signup with Email or Third-Party Providers](https://github.com/se2p/todo-app-anisbelkacem/issues/3)  
+[FR4 – Mark Tasks as Completed](https://github.com/se2p/todo-app-anisbelkacem/issues/4)  
+[FR5 – View Tasks in Daily/Weekly/Monthly Formats](https://github.com/se2p/todo-app-anisbelkacem/issues/5)  
+[FR6 – Set Priority Levels for Tasks](https://github.com/se2p/todo-app-anisbelkacem/issues/6)  
+[NFR1 – App Responds Within 2 Seconds](https://github.com/se2p/todo-app-anisbelkacem/issues/7)  
+[NFR2 – 99.9% Uptime](https://github.com/se2p/todo-app-anisbelkacem/issues/8)  
+[NFR3 – Data Encryption in Transit and at Rest](https://github.com/se2p/todo-app-anisbelkacem/issues/9)  
+[NFR4 – Support 10,000 Concurrent Users](https://github.com/se2p/todo-app-anisbelkacem/issues/10)
