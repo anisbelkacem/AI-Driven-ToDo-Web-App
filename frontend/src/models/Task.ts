@@ -4,8 +4,7 @@ export interface Task {
   completed: boolean;
   userId?: number; // Optional, if tasks are user-specific
   priority: number;
-  
-  
+  date: string; 
   // Add any other fields you need
   // For example, priority, due date, etc.
   // priority?: 'low' | 'medium' | 'high';

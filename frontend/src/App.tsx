@@ -27,6 +27,9 @@ const App: React.FC = () => {
   const [userName, setUserName] = useState<string | null>(null); // Username fetched from the database
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null); // For dropdown menu
   const { tasks, addTask, updateTask, toggleTask, deleteTask, isLoading, refetchTasks  } = useTasks();
+  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedDay, setSelectedDay] = useState('');
+  const [completionFilter, setCompletionFilter] = useState('all');
 
   // Fetch user information after login
   useEffect(() => {
@@ -126,7 +129,8 @@ const App: React.FC = () => {
         </Typography>
         <AddTask onAdd={async (title) => { await addTask({
           title, completed: false,
-          priority: 0
+          priority: 0,
+          date: new Date().toISOString()
         }); }} />
         {isLoading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
@@ -143,6 +147,12 @@ const App: React.FC = () => {
             onDelete={async (id: number) => { await deleteTask(id); }}
             onUpdate={async (task: Task) => { await updateTask(task); }}
             refetchTasks={refetchTasks}
+            selectedMonth={selectedMonth}
+            setSelectedMonth={setSelectedMonth}
+            selectedDay={selectedDay}
+            setSelectedDay={setSelectedDay}
+            completionFilter={completionFilter}
+            setCompletionFilter={setCompletionFilter}
           />
         )}
       </Box>

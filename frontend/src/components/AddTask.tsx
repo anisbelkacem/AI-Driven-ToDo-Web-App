@@ -14,11 +14,12 @@ import {
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 interface AddTaskProps {
-  onAdd: (title: string) => Promise<void>;
+  onAdd: (title: string, date: string) => Promise<void>;
 }
 
 const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
   const [taskTitle, setTaskTitle] = useState('');
+  const [taskDate, setTaskDate] = useState(() => new Date().toISOString().slice(0, 10)); // default to today
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -29,6 +30,7 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['tasks'] });
       setTaskTitle('');
+      setTaskDate(new Date().toISOString().slice(0, 10));
     }
   });
 
@@ -38,7 +40,8 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
     mutation.mutate({
       title: taskTitle,
       completed: false,
-      priority: 0
+      priority: 0,
+      date: taskDate, // use the selected date
     });
   };
 
@@ -77,6 +80,17 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
             backgroundColor: '#fff',
             borderRadius: 1,
           }}
+        />
+        <TextField
+          label="Date"
+          type="date"
+          value={taskDate}
+          onChange={(e) => setTaskDate(e.target.value)}
+          sx={{ backgroundColor: '#fff', borderRadius: 1, minWidth: 140 }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          disabled={mutation.isPending}
         />
         <Button
           type="submit"
