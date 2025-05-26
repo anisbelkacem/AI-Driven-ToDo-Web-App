@@ -1,10 +1,12 @@
 package com.example.todo.controller;
 
 import com.example.todo.model.Task;
+import com.example.todo.model.User;
 import com.example.todo.repository.TaskRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,13 +23,18 @@ public class TaskController {
 
     // GET all tasks
     @GetMapping
-    public List<Task> getAllTasks() {
-        return repository.findAll();
+    public List<Task> getAllTasks(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) return List.of();
+        return repository.findByUserId(user.getId());
     }
 
     // POST a new task
     @PostMapping
-    public Task createTask(@RequestBody Task task) {
+    public Task createTask(@RequestBody Task task, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) throw new RuntimeException("Not logged in");
+        task.setUser(user);
         return repository.save(task);
     }
 
@@ -55,5 +62,18 @@ public class TaskController {
         } else {
             return ResponseEntity.notFound().build(); // 404 Not Found
         }
+    }
+
+    // After login, store user info
+    @PostMapping("/reorder")
+    public ResponseEntity<?> reorderTasks(@RequestBody List<Task> tasks) {
+        for (Task t : tasks) {
+            Task existing = repository.findById(t.getId()).orElse(null);
+            if (existing != null) {
+                existing.setPriority(t.getPriority());
+                repository.save(existing);
+            }
+        }
+        return ResponseEntity.ok().build();
     }
 }

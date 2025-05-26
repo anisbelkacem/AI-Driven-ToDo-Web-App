@@ -5,7 +5,7 @@ import { Task } from '../models/Task';
 export const useTasks = () => {
   const queryClient = useQueryClient();
   
-  const { data: tasks = [] } = useQuery<Task[]>({
+  const { data: tasks = [], refetch } = useQuery<Task[]>({
     queryKey: ['tasks'],
     queryFn: taskApi.getTasks
   });
@@ -27,13 +27,18 @@ export const useTasks = () => {
     mutationFn: (id: number) => taskApi.deleteTask(id),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] })
   });
-
+  const refrech = useMutation({
+    mutationFn: () => taskApi.getTasks(),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] })
+  });
   return {
     tasks,
     addTask: addMutation.mutate,
     toggleTask: updateMutation.mutate,
     deleteTask: deleteMutation.mutate,
     updateTask: updateMutation.mutate,
-    isLoading: addMutation.isPending || updateMutation.isPending || deleteMutation.isPending
+    refetchTasks: refrech.mutate,
+    isLoading: addMutation.isPending || updateMutation.isPending || deleteMutation.isPending || refrech.isPending,
+    
   };
 };

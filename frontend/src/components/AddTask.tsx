@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addTask } from '../services/api';
 import { Task } from '../models/Task';
-//import { TextField, Button, Box, CircularProgress } from '@mui/material';
 import {
   TextField,
   Button,
@@ -10,8 +9,10 @@ import {
   Paper,
   CircularProgress,
   Typography,
+  InputAdornment,
 } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 interface AddTaskProps {
   onAdd: (title: string) => Promise<void>;
 }
@@ -34,62 +35,69 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!taskTitle.trim()) return;
-    mutation.mutate({ 
-      title: taskTitle, 
-      completed: false 
+    mutation.mutate({
+      title: taskTitle,
+      completed: false,
+      priority: 0
     });
   };
 
   return (
     <Paper
-      elevation={3}
+      elevation={2}
       sx={{
-        p: 3,
-        mb: 4,
-        borderRadius: 3,
+        p: 2,
+        mb: 3,
+        borderRadius: 2,
         backgroundColor: '#f9f9f9',
       }}
     >
-      <Typography variant="h6" mb={2} fontWeight="bold">
-        Add a New Task
-      </Typography>
-
-      <Box component="form" onSubmit={handleSubmit}>
-        <Box display="flex" gap={2} alignItems="center">
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="Task Description"
-            value={taskTitle}
-            onChange={(e) => setTaskTitle(e.target.value)}
-            disabled={mutation.isPending}
-            sx={{
-              backgroundColor: '#fff',
-              borderRadius: 1,
-            }}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            startIcon={!mutation.isPending && <AddIcon />}
-            disabled={!taskTitle.trim() || mutation.isPending}
-            sx={{ minWidth: 140, height: 56, borderRadius: 2 }}
-          >
-            {mutation.isPending ? (
-              <CircularProgress size={24} color="inherit" />
-            ) : (
-              'Add Task'
-            )}
-          </Button>
-        </Box>
-
-        {mutation.isError && (
-          <Typography color="error" mt={2}>
-            Error adding task: {(mutation.error as Error).message}
-          </Typography>
-        )}
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        display="flex"
+        alignItems="center"
+        gap={2}
+      >
+        <TextField
+          label="Add a new task"
+          variant="outlined"
+          value={taskTitle}
+          onChange={(e) => setTaskTitle(e.target.value)}
+          fullWidth
+          disabled={mutation.isPending}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AddCircleOutlineIcon color="primary" />
+              </InputAdornment>
+            ),
+          }}
+          sx={{
+            backgroundColor: '#fff',
+            borderRadius: 1,
+          }}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          sx={{ fontWeight: 600, px: 3, py: 1.5, borderRadius: 2 }}
+          disabled={!taskTitle.trim() || mutation.isPending}
+        >
+          {mutation.isPending ? (
+            <CircularProgress size={24} color="inherit" />
+          ) : (
+            'Add'
+          )}
+        </Button>
       </Box>
+
+      {mutation.isError && (
+        <Typography color="error" mt={2}>
+          Error adding task: {(mutation.error as Error).message}
+        </Typography>
+      )}
     </Paper>
   );
 };
