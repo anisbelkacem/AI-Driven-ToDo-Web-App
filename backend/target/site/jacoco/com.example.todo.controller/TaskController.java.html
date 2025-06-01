@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">todo</a> &gt; <a href="index.source.html" class="el_package">com.example.todo.controller</a> &gt; <span class="el_source">TaskController.java</span></div><h1>TaskController.java</h1><pre class="source lang-java linenums">package com.example.todo.controller;
+
+import com.example.todo.model.Task;
+import com.example.todo.model.User;
+import com.example.todo.repository.TaskRepository;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping(&quot;/api/tasks&quot;)
+@CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+public class TaskController {
+
+    private final TaskRepository repository;
+
+<span class="fc" id="L20">    public TaskController(TaskRepository repository) {</span>
+<span class="fc" id="L21">        this.repository = repository;</span>
+<span class="fc" id="L22">    }</span>
+
+    // GET all tasks
+    @GetMapping
+    public List&lt;Task&gt; getAllTasks(HttpSession session) {
+<span class="fc" id="L27">        User user = (User) session.getAttribute(&quot;user&quot;);</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if (user == null) return List.of();</span>
+<span class="fc" id="L29">        return repository.findByUserId(user.getId());</span>
+    }
+
+    // POST a new task
+    @PostMapping
+    public Task createTask(@RequestBody Task task, HttpSession session) {
+<span class="fc" id="L35">        User user = (User) session.getAttribute(&quot;user&quot;);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if (user == null) throw new RuntimeException(&quot;Not logged in&quot;);</span>
+<span class="fc" id="L37">        task.setUser(user);</span>
+<span class="fc" id="L38">        return repository.save(task);</span>
+    }
+
+    // DELETE a task by ID
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteTask(@PathVariable Long id) {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (repository.existsById(id)) {</span>
+<span class="fc" id="L45">            repository.deleteById(id);</span>
+<span class="fc" id="L46">            return ResponseEntity.noContent().build(); // 204 No Content</span>
+        }
+<span class="fc" id="L48">        return ResponseEntity.notFound().build(); // 404 Not Found</span>
+    }
+
+    // PUT (update) a task by ID
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Task&gt; updateTask(@PathVariable Long id, @RequestBody Task updatedTask) {
+<span class="fc" id="L54">        Optional&lt;Task&gt; optionalTask = repository.findById(id);</span>
+
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (optionalTask.isPresent()) {</span>
+<span class="fc" id="L57">            Task existingTask = optionalTask.get();</span>
+<span class="fc" id="L58">            existingTask.setTitle(updatedTask.getTitle());</span>
+<span class="fc" id="L59">            existingTask.setCompleted(updatedTask.isCompleted());</span>
+<span class="fc" id="L60">            Task savedTask = repository.save(existingTask);</span>
+<span class="fc" id="L61">            return ResponseEntity.ok(savedTask);</span>
+        } else {
+<span class="fc" id="L63">            return ResponseEntity.notFound().build(); // 404 Not Found</span>
+        }
+    }
+
+    // After login, store user info
+    @PostMapping(&quot;/reorder&quot;)
+    public ResponseEntity&lt;?&gt; reorderTasks(@RequestBody List&lt;Task&gt; tasks) {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for (Task t : tasks) {</span>
+<span class="fc" id="L71">            Task existing = repository.findById(t.getId()).orElse(null);</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">            if (existing != null) {</span>
+<span class="fc" id="L73">                existing.setPriority(t.getPriority());</span>
+<span class="fc" id="L74">                repository.save(existing);</span>
+            }
+<span class="fc" id="L76">        }</span>
+<span class="fc" id="L77">        return ResponseEntity.ok().build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

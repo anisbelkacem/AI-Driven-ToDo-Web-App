@@ -52,4 +52,8 @@ public class User {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+
+    public void setId(long l) {
+        this.id = l;
+    }
 }

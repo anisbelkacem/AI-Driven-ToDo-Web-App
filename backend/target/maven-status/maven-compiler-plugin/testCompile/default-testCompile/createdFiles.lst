@@ -1,0 +1,5 @@
+com\example\todo\controller\TaskControllerTest.class
+com\example\todo\service\UserServiceTest.class
+com\example\todo\model\TaskTest.class
+com\example\todo\model\UserTest.class
+com\example\todo\controller\AuthControllerTest.class

@@ -18,6 +18,12 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
+
+
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody User user) {
         boolean success = userService.registerUser(user);

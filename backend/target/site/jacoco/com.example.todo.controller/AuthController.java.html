@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">todo</a> &gt; <a href="index.source.html" class="el_package">com.example.todo.controller</a> &gt; <span class="el_source">AuthController.java</span></div><h1>AuthController.java</h1><pre class="source lang-java linenums">package com.example.todo.controller;
+
+import com.example.todo.model.User;
+import com.example.todo.service.UserService;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import jakarta.servlet.http.HttpSession;
+
+@RestController
+@RequestMapping(&quot;/api/auth&quot;)
+@CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+public class AuthController {
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+<span class="fc" id="L22">    public AuthController(UserService userService) {</span>
+<span class="fc" id="L23">        this.userService = userService;</span>
+<span class="fc" id="L24">    }</span>
+
+
+    @PostMapping(&quot;/signup&quot;)
+    public ResponseEntity&lt;String&gt; signup(@RequestBody User user) {
+<span class="fc" id="L29">        boolean success = userService.registerUser(user);</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (success) {</span>
+<span class="fc" id="L31">            return ResponseEntity.ok(&quot;User registered successfully&quot;);</span>
+        } else {
+<span class="fc" id="L33">            return ResponseEntity.badRequest().body(&quot;Email already exists&quot;);</span>
+        }
+    }
+
+    @PostMapping(&quot;/login&quot;)
+    public ResponseEntity&lt;?&gt; login(@RequestBody User user, HttpSession session) {
+<span class="fc" id="L39">        User foundUser = userService.findByEmail(user.getEmail());</span>
+<span class="fc bfc" id="L40" title="All 4 branches covered.">        if (foundUser != null &amp;&amp; foundUser.getPassword().equals(user.getPassword())) {</span>
+<span class="fc" id="L41">            session.setAttribute(&quot;user&quot;, foundUser);</span>
+            // Return user info (not password)
+<span class="fc" id="L43">            return ResponseEntity.ok(Map.of(</span>
+<span class="fc" id="L44">                &quot;id&quot;, foundUser.getId(),</span>
+<span class="fc" id="L45">                &quot;firstName&quot;, foundUser.getFirstName(),</span>
+<span class="fc" id="L46">                &quot;lastName&quot;, foundUser.getLastName(),</span>
+<span class="fc" id="L47">                &quot;email&quot;, foundUser.getEmail()</span>
+            ));
+        } else {
+<span class="fc" id="L50">            return ResponseEntity.status(401).body(&quot;Invalid credentials&quot;);</span>
+        }
+    }
+
+    // Add endpoint to get current user info
+    @GetMapping(&quot;/user&quot;)
+    public ResponseEntity&lt;?&gt; getCurrentUser(HttpSession session) {
+<span class="fc" id="L57">        User user = (User) session.getAttribute(&quot;user&quot;);</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (user == null) {</span>
+<span class="fc" id="L59">            return ResponseEntity.status(401).body(&quot;Not logged in&quot;);</span>
+        }
+<span class="fc" id="L61">        return ResponseEntity.ok(Map.of(</span>
+<span class="fc" id="L62">            &quot;id&quot;, user.getId(),</span>
+<span class="fc" id="L63">            &quot;firstName&quot;, user.getFirstName(),</span>
+<span class="fc" id="L64">            &quot;lastName&quot;, user.getLastName(),</span>
+<span class="fc" id="L65">            &quot;email&quot;, user.getEmail()</span>
+        ));
+    }
+
+    @PostMapping(&quot;/logout&quot;)
+    public ResponseEntity&lt;?&gt; logout(HttpSession session) {
+<span class="fc" id="L71">        session.invalidate();</span>
+<span class="fc" id="L72">        return ResponseEntity.ok().build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
