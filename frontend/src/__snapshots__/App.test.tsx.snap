@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches snapshot 1`] = `
+<DocumentFragment>
+  <button>
+    Mock Login
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Snapshots matches initial login state snapshot 1`] = `
+<DocumentFragment>
+  <button>
+    Mock Login
+  </button>
+</DocumentFragment>
+`;

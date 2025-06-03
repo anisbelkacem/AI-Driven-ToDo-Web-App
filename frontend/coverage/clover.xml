@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1748909190050" clover="3.2.0">
+  <project timestamp="1748909190050" name="All files">
+    <metrics statements="179" coveredstatements="163" conditionals="68" coveredconditionals="59" methods="71" coveredmethods="61" elements="318" coveredelements="283" complexity="0" loc="179" ncloc="179" packages="4" files="7" classes="7"/>
+    <package name="src">
+      <metrics statements="34" coveredstatements="30" conditionals="10" coveredconditionals="9" methods="13" coveredmethods="8"/>
+      <file name="App.tsx" path="C:\Users\GIGABYTE\todo_app\frontend\src\App.tsx">
+        <metrics statements="34" coveredstatements="30" conditionals="10" coveredconditionals="9" methods="13" coveredmethods="8"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="33" type="stmt"/>
+        <line num="27" count="33" type="stmt"/>
+        <line num="28" count="33" type="stmt"/>
+        <line num="29" count="33" type="stmt"/>
+        <line num="30" count="33" type="stmt"/>
+        <line num="31" count="33" type="stmt"/>
+        <line num="32" count="33" type="stmt"/>
+        <line num="35" count="33" type="stmt"/>
+        <line num="36" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="8" type="stmt"/>
+        <line num="40" count="7" type="stmt"/>
+        <line num="41" count="7" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="49" count="33" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="53" count="33" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="57" count="33" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="65" count="33" type="stmt"/>
+        <line num="66" count="8" type="stmt"/>
+        <line num="67" count="8" type="stmt"/>
+        <line num="70" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="14" type="stmt"/>
+        <line num="82" count="19" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="147" count="0" type="stmt"/>
+        <line num="148" count="0" type="stmt"/>
+        <line num="149" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="111" coveredstatements="101" conditionals="53" coveredconditionals="45" methods="43" coveredmethods="40"/>
+      <file name="AddTask.tsx" path="C:\Users\GIGABYTE\todo_app\frontend\src\components\AddTask.tsx">
+        <metrics statements="18" coveredstatements="18" conditionals="9" coveredconditionals="7" methods="7" coveredmethods="7"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="40" type="stmt"/>
+        <line num="22" count="40" type="stmt"/>
+        <line num="23" count="40" type="stmt"/>
+        <line num="25" count="40" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="38" count="40" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="49" count="40" type="cond" truecount="3" falsecount="0"/>
+        <line num="51" count="40" type="stmt"/>
+        <line num="72" count="6" type="stmt"/>
+        <line num="91" count="4" type="stmt"/>
+      </file>
+      <file name="Login.tsx" path="C:\Users\GIGABYTE\todo_app\frontend\src\components\Login.tsx">
+        <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="13" type="stmt"/>
+        <line num="25" count="13" type="stmt"/>
+        <line num="26" count="13" type="stmt"/>
+        <line num="27" count="13" type="stmt"/>
+        <line num="29" count="13" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="33" count="13" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="44" count="13" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+      </file>
+      <file name="TaskList.tsx" path="C:\Users\GIGABYTE\todo_app\frontend\src\components\TaskList.tsx">
+        <metrics statements="77" coveredstatements="67" conditionals="38" coveredconditionals="32" methods="31" coveredmethods="28"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="56" count="33" type="stmt"/>
+        <line num="57" count="33" type="stmt"/>
+        <line num="58" count="33" type="stmt"/>
+        <line num="61" count="33" type="stmt"/>
+        <line num="62" count="33" type="stmt"/>
+        <line num="64" count="61" type="stmt"/>
+        <line num="65" count="33" type="stmt"/>
+        <line num="66" count="61" type="cond" truecount="2" falsecount="0"/>
+        <line num="69" count="33" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="74" count="33" type="stmt"/>
+        <line num="75" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="86" count="33" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="91" count="33" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+        <line num="93" count="2" type="stmt"/>
+        <line num="97" count="33" type="stmt"/>
+        <line num="98" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="108" count="33" type="stmt"/>
+        <line num="109" count="1" type="stmt"/>
+        <line num="110" count="1" type="stmt"/>
+        <line num="113" count="33" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="115" count="1" type="stmt"/>
+        <line num="116" count="1" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
+        <line num="123" count="33" type="stmt"/>
+        <line num="126" count="33" type="stmt"/>
+        <line num="127" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="128" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="130" count="33" type="cond" truecount="1" falsecount="1"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="135" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="136" count="2" type="stmt"/>
+        <line num="137" count="32" type="cond" truecount="1" falsecount="1"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="142" count="33" type="stmt"/>
+        <line num="143" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="144" count="0" type="stmt"/>
+        <line num="145" count="0" type="stmt"/>
+        <line num="146" count="0" type="stmt"/>
+        <line num="149" count="0" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="154" count="0" type="stmt"/>
+        <line num="157" count="0" type="stmt"/>
+        <line num="161" count="61" type="stmt"/>
+        <line num="162" count="33" type="stmt"/>
+        <line num="164" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="165" count="1" type="stmt"/>
+        <line num="174" count="32" type="stmt"/>
+        <line num="182" count="2" type="stmt"/>
+        <line num="183" count="2" type="stmt"/>
+        <line num="196" count="32" type="stmt"/>
+        <line num="205" count="1" type="stmt"/>
+        <line num="213" count="61" type="cond" truecount="2" falsecount="0"/>
+        <line num="215" count="61" type="stmt"/>
+        <line num="224" count="2" type="stmt"/>
+        <line num="247" count="32" type="stmt"/>
+        <line num="249" count="60" type="stmt"/>
+        <line num="251" count="60" type="stmt"/>
+        <line num="272" count="2" type="stmt"/>
+        <line num="277" count="2" type="stmt"/>
+        <line num="295" count="1" type="stmt"/>
+        <line num="306" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.hooks">
+      <metrics statements="16" coveredstatements="14" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="7"/>
+      <file name="useTasks.ts" path="C:\Users\GIGABYTE\todo_app\frontend\src\hooks\useTasks.ts">
+        <metrics statements="16" coveredstatements="14" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="7"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="8" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.services">
+      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <file name="api.ts" path="C:\Users\GIGABYTE\todo_app\frontend\src\services\api.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+      <file name="auth.ts" path="C:\Users\GIGABYTE\todo_app\frontend\src\services\auth.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

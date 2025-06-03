@@ -87,10 +87,11 @@ const App: React.FC = () => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             To-Do App
           </Typography>
-          <IconButton onClick={handleMenuOpen} sx={{ p: 0 }}>
+          <IconButton aria-label="user menu" onClick={handleMenuOpen} sx={{ p: 0 }}>
             <Avatar sx={{ bgcolor: '#1976d2' }}>{userName?.charAt(0)}</Avatar>
           </IconButton>
           <Menu
+            data-testid="user-menu"
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
@@ -114,7 +115,7 @@ const App: React.FC = () => {
               <SettingsIcon sx={{ mr: 1 }} />
               Settings
             </MenuItem>
-            <MenuItem onClick={handleLogout}>
+            <MenuItem onClick={handleLogout} data-testid="logout-menu-item">
               <LogoutIcon sx={{ mr: 1 }} />
               Logout
             </MenuItem>

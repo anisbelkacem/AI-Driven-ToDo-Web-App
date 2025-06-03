@@ -31,6 +31,7 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
       queryClient.invalidateQueries({ queryKey: ['tasks'] });
       setTaskTitle('');
       setTaskDate(new Date().toISOString().slice(0, 10));
+      // Remove onAdd call here
     }
   });
 
@@ -44,6 +45,8 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
       date: taskDate, // use the selected date
     });
   };
+
+  const isDisabled = !taskTitle.trim() || !taskDate || mutation.isPending;
 
   return (
     <Paper
@@ -97,7 +100,7 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
           variant="contained"
           color="primary"
           sx={{ fontWeight: 600, px: 3, py: 1.5, borderRadius: 2 }}
-          disabled={!taskTitle.trim() || mutation.isPending}
+          disabled={isDisabled}
         >
           {mutation.isPending ? (
             <CircularProgress size={24} color="inherit" />

@@ -183,8 +183,13 @@ export const TaskList = ({
             setSelectedDay('');
           }}
           sx={{ minWidth: 140 }}
-          SelectProps={{ native: true }}
-          InputLabelProps={{ shrink: true }} // <-- Add this line
+          SelectProps={{ 
+            native: true,
+            inputProps: {
+              'data-testid': 'month-filter-select' // Changed test ID to target select element
+            }
+          }}
+          InputLabelProps={{ shrink: true }}
         >
           <option value="">All Months</option>
           {availableMonths.map(month => (
@@ -218,7 +223,12 @@ export const TaskList = ({
           value={completionFilter}
           onChange={e => setCompletionFilter(e.target.value)}
           sx={{ minWidth: 140 }}
-          SelectProps={{ native: true }}
+          SelectProps={{ 
+            native: true,
+            inputProps: {
+              'data-testid': 'status-filter-select' // Changed test ID to target select element
+            }
+          }}
           InputLabelProps={{ shrink: true }}
         >
           <option value="all">All Tasks</option>
@@ -298,6 +308,7 @@ export const TaskList = ({
                                     fullWidth
                                   />
                                   <IconButton
+                                    aria-label="check"
                                     color="success"
                                     onClick={handleSaveEdit}
                                     disabled={isProcessing || !editedTitle.trim()}
@@ -306,6 +317,7 @@ export const TaskList = ({
                                     <CheckIcon />
                                   </IconButton>
                                   <IconButton
+                                    aria-label="close"
                                     color="error"
                                     onClick={handleCancelEdit}
                                     disabled={isProcessing}
