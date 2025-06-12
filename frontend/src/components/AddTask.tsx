@@ -67,6 +67,7 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
       >
         <TextField
           label="Add a new task"
+          name="Add a new task"
           variant="outlined"
           value={taskTitle}
           onChange={(e) => setTaskTitle(e.target.value)}
@@ -86,6 +87,7 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
         />
         <TextField
           label="Date"
+          name='taskDate'
           type="date"
           value={taskDate}
           onChange={(e) => setTaskDate(e.target.value)}

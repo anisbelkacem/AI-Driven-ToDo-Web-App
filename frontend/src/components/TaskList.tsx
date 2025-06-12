@@ -177,6 +177,7 @@ export const TaskList = ({
         <TextField
           select
           label="Month"
+          name="Month"
           value={selectedMonth}
           onChange={e => {
             setSelectedMonth(e.target.value);
@@ -201,6 +202,7 @@ export const TaskList = ({
         <TextField
           select
           label="Day"
+          name="Day"
           value={selectedDay}
           onChange={e => setSelectedDay(e.target.value)}
           sx={{ minWidth: 140 }}
@@ -244,7 +246,7 @@ export const TaskList = ({
         <DragDropContext onDragEnd={handleDragEnd}>
           <Droppable droppableId="task-list">
             {(provided) => (
-              <List ref={provided.innerRef} {...provided.droppableProps}>
+              <List ref={provided.innerRef} {...provided.droppableProps} data-testid="task-list">
                 {filteredTasks.map((task, idx) => (
                   <Draggable key={task.id} draggableId={task.id.toString()} index={idx}>
                     {(provided) => (
@@ -269,12 +271,17 @@ export const TaskList = ({
                                   {task.date}
                                 </Typography>
                                 <Tooltip title="Edit">
-                                  <IconButton edge="end" color="primary" onClick={() => handleEditClick(task)}>
-                                    <EditIcon />
-                                  </IconButton>
+                                  <IconButton
+                                      edge="end"
+                                      color="primary"
+                                      aria-label="edit"
+                                      onClick={() => handleEditClick(task)}
+                                    >
+                                      <EditIcon />
+                                    </IconButton>
                                 </Tooltip>
                                 <Tooltip title="Delete">
-                                  <IconButton edge="end" color="error" onClick={() => handleDeleteClick(task.id!)}>
+                                  <IconButton name="delete" edge="end" color="error" onClick={() => handleDeleteClick(task.id!)}>
                                     <DeleteIcon />
                                   </IconButton>
                                 </Tooltip>
@@ -285,7 +292,7 @@ export const TaskList = ({
                           {/* Drag handle icon */}
                           <Box
                             sx={{ display: 'flex', alignItems: 'center', cursor: 'grab', mr: 1 }}
-                            {...provided.dragHandleProps} // <-- Attach dragHandleProps here
+                            data-testid="drag-handle" {...provided.dragHandleProps} // <-- Attach dragHandleProps here
                           >
                             <DragIndicatorIcon color="disabled" />
                           </Box>
@@ -301,6 +308,7 @@ export const TaskList = ({
                               primary={
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                   <TextField
+                                    name="Edit task"
                                     variant="standard"
                                     value={editedTitle}
                                     onChange={(e) => setEditedTitle(e.target.value)}
@@ -366,10 +374,10 @@ export const TaskList = ({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancelDelete} color="primary">
+          <Button name="Cancel Delete" onClick={handleCancelDelete} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleConfirmDelete} color="error" autoFocus disabled={isProcessing}>
+          <Button name="confirm Delete" onClick={handleConfirmDelete} color="error" autoFocus disabled={isProcessing}>
             Delete
           </Button>
         </DialogActions>
