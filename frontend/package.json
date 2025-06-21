@@ -30,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src --ext .ts,.tsx"
+    "lint": "eslint .",
+    "test:e2e": "start-server-and-test start http://localhost:3000 'playwright test'"
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +63,7 @@
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.2.0",
+    "start-server-and-test": "^2.0.12",
     "typescript-eslint": "^8.34.1"
   }
 }
