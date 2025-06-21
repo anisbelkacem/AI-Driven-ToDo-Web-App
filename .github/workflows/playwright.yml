@@ -13,13 +13,31 @@ jobs:
         working-directory: frontend
     steps:
       - uses: actions/checkout@v4
+
+      # Install and start backend
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+        # Move to backend to build and start
+      - name: Build backend
+        run: mvn package -DskipTests
+        working-directory: ../backend
+      - name: Start backend
+        run: nohup mvn spring-boot:run &
+        working-directory: ../backend
+
+      # Install frontend dependencies
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
       - name: Install dependencies
         run: npm ci
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+
       - name: Run Playwright tests
         run: npm run test:e2e
       - uses: actions/upload-artifact@v4
