@@ -10,7 +10,8 @@ const mockTasks = [
   { id: 1, title: 'Task 1', completed: false, priority: 0, date: '2025-06-02' },
 ];
 
-function wrapper({ children }: React.PropsWithChildren<{}>) {
+// FIX: Use object instead of {} as type
+function wrapper({ children }: React.PropsWithChildren<object>) {
   const queryClient = new QueryClient();
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 }
@@ -55,8 +56,6 @@ describe('useTasks', () => {
     });
     expect(taskApi.deleteTask).toHaveBeenCalledWith(1);
   });
-
-  
 
   it('isLoading is false when no mutation is pending', async () => {
     const { result } = renderHook(() => useTasks(), { wrapper });
