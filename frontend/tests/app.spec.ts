@@ -120,7 +120,7 @@ test('mark a task as complete', async ({ page }) => {
 
   // Find the task row and click its checkbox to mark as complete
   const taskRow = page.getByText(uniqueTask).locator('..').locator('..');
-  await taskRow.getByRole('checkbox').check();
+  await taskRow.getByRole('checkbox').setChecked(true);
 });
 
 test('view tasks in daily/monthly formats', async ({ page }) => {
