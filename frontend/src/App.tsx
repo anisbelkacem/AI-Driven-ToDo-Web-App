@@ -72,7 +72,9 @@ const App: React.FC = () => {
       <Router>
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup onSignup={() => {}} />} />
+          <Route path="/signup" element={<Signup onSignup={function (): void {
+            throw new Error('Function not implemented.');
+          } } />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </Router>

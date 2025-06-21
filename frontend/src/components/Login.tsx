@@ -111,7 +111,7 @@ const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
             </Button>
             <Box textAlign="center" mt={2}>
               <Typography variant="body2">
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Typography
                   component={RouterLink}
                   to="/signup"

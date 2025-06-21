@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import AddTask from './AddTask';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '@testing-library/jest-dom';
+import * as api from '../services/api';
 
 // Mock the API call
 jest.mock('../services/api', () => ({
@@ -54,8 +55,7 @@ test('clears input after successful submit', async () => {
 test('shows error message when mutation fails', async () => {
   // Override the mock to simulate an error
   const errorMessage = 'Network Error';
-  const { addTask } = require('../services/api');
-  addTask.mockImplementationOnce(() => Promise.reject(new Error(errorMessage)));
+  (api.addTask as jest.Mock).mockImplementationOnce(() => Promise.reject(new Error(errorMessage)));
 
   renderAddTask();
   const input = screen.getByLabelText(/add a new task/i);

@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Login from './Login';
 import { BrowserRouter } from 'react-router-dom';
+import * as auth from '../services/auth';
 
 // Mock the login API
 jest.mock('../services/auth', () => ({
@@ -40,8 +41,7 @@ test('calls onLogin on valid submit', async () => {
 
 test('shows error message on invalid login', async () => {
   // Override the mock to simulate a failed login
-  const { login } = require('../services/auth');
-  login.mockImplementationOnce(() => Promise.reject(new Error('Invalid credentials')));
+  (auth.login as jest.Mock).mockImplementationOnce(() => Promise.reject(new Error('Invalid credentials')));
 
   renderLogin();
   fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'wrong@example.com' } });
