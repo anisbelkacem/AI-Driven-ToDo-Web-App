@@ -6,7 +6,6 @@ frontend/blob-report/
 frontend/playwright/.cache/
 /backend/target/
 /backend/*.jar
-/frontend/node_modules/
 /frontend/.cache/
 /backend/target/todo-0.0.1-SNAPSHOT.jar/
 /backend/data/
