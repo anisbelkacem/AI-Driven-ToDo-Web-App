@@ -25,7 +25,7 @@ public class TaskController {
     @GetMapping
     public List&lt;Task&gt; getAllTasks(HttpSession session) {
 <span class="fc" id="L27">        User user = (User) session.getAttribute(&quot;user&quot;);</span>
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if (user == null) return List.of();</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (user == null) return List.of();</span>
 <span class="fc" id="L29">        return repository.findByUserId(user.getId());</span>
     }
 
@@ -69,11 +69,11 @@ public class TaskController {
     public ResponseEntity&lt;?&gt; reorderTasks(@RequestBody List&lt;Task&gt; tasks) {
 <span class="fc bfc" id="L70" title="All 2 branches covered.">        for (Task t : tasks) {</span>
 <span class="fc" id="L71">            Task existing = repository.findById(t.getId()).orElse(null);</span>
-<span class="pc bpc" id="L72" title="1 of 2 branches missed.">            if (existing != null) {</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if (existing != null) {</span>
 <span class="fc" id="L73">                existing.setPriority(t.getPriority());</span>
 <span class="fc" id="L74">                repository.save(existing);</span>
             }
-<span class="fc" id="L76">        }</span>
+        }
 <span class="fc" id="L77">        return ResponseEntity.ok().build();</span>
     }
 }
