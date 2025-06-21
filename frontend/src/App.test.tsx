@@ -6,6 +6,7 @@ import App from './App';
 
 // Suppress console.error for cleaner test output
 beforeAll(() => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   jest.spyOn(console, 'error').mockImplementation(() => {});
 });
 afterAll(() => {
