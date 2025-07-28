@@ -1,1 +1,28 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/p5dtBVYg)
+# 📝 ToDo App
+
+A full-stack ToDo application built with **React** and **TypeScript** on the frontend and **Spring Boot** with **Java** and **H2 Database** on the backend.
+
+## 📌 Features
+
+- Create, read, update, and delete (CRUD) tasks
+- User-friendly and responsive UI
+- RESTful API integration
+- In-memory H2 database for quick setup and testing
+- Type-safe frontend with TypeScript
+
+## 🛠 Tech Stack
+
+### Frontend
+- React
+- TypeScript
+- Axios
+- CSS / Tailwind (or any styling framework you used)
+
+### Backend
+- Java
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- H2 Database
+
+---
